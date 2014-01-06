@@ -23,6 +23,9 @@
     "email": "passy@twitter.com",
     "url": "http://passy.me/"
   },
+  "engines": {
+    "node": ">=0.8.0"
+  }
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/passy/node-dom-urls/issues"
