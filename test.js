@@ -17,7 +17,7 @@ suite('Properties', function () {
     }, TypeError);
     assert.throws(function () {
       new URL('relative');
-    }, TypeError);
+    }, SyntaxError);
   });
 
   test('base', function () {

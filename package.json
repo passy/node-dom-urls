@@ -32,7 +32,6 @@
     "chai": "~1.8.1"
   },
   "dependencies": {
-    "extend": "~1.2.1",
     "URIjs": "~1.11.2"
   }
 }

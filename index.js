@@ -1,29 +1,17 @@
 'use strict';
 
-var url = require('url');
-
-function _parseURL(urlStr, base) {
-  var _url;
-
-  if (base) {
-    urlStr = url.resolve(base, urlStr);
-  }
-
-  _url = url.parse(
-    urlStr,
-    /* parseQueryString */ true,
-    /* slashesDenoteHost */ true
-  );
-
-  if (!_url.protocol) {
-    throw new TypeError('Failed to construct URL: Invalid URL');
-  }
-
-  return _url;
-}
+var URI = require('URIjs');
 
 function URL(urlStr, base) {
-  this._url = _parseURL(urlStr, base);
+  if (!urlStr) {
+    throw new TypeError('You need to provide a URL');
+  }
+
+  this._url = new URI(urlStr, base);
+
+  if (!this._url.protocol()) {
+    throw new SyntaxError('Failed to construct \'URL\': Invalid URL');
+  }
 }
 
 URL.prototype = {
@@ -31,82 +19,67 @@ URL.prototype = {
     return this.href;
   },
 
-  get href() {
-    return this._url.format();
-  },
-
-  set href(value) {
-    this._url = _parseURL(value);
-  },
-
-  get host() {
-    return this._url.host;
-  },
-
-  set host(value) {
-    // The host value affects multiple attributes, but the `url` module
-    // doesn't cascade the changes, so we manually update them.
-    var newUrl = url.parse('proto:' + value);
-
-    if (newUrl.port) {
-      this._url.port = newUrl.port;
-      this._url.host = newUrl.host;
-    } else if (this._url.port) {
-      this._url.host = newUrl.host + ':' + this._url.port;
-    } else {
-      this._url.host = newUrl.host;
-    }
-
-    this._url.hostname = newUrl.hostname;
-  },
-
-  get hostname() {
-    return this._url.hostname;
-  },
-
-  set hostname(value) {
-    // Replace a port if it's in place and treat it like a host change
-    // afterwards.
-    this.host = value.replace(/(\:.*)?$/, '');
-  },
-
   get protocol() {
-    return this._url.protocol;
+    // Spec wants the trailing colon. (See 5.2)
+    return this._url.protocol() + ':';
   },
 
   set protocol(value) {
     // Strip the colon, including anything following it and replace it with a
     // single one.
-    this._url.protocol = value.replace(/(\:.*)?$/, ':');
+    this._url.protocol(value.replace(/(\:.*)?$/, ':'));
   },
 
-  get port() {
-    // Port should be an empty string (zero ASCII digits) instead of null in DOM
-    // land. (Section 4.1)
-    return this._url.port || '';
+  get host() {
+    return this._url.host();
   },
 
-  set port(value) {
-    this._url.port = value;
+  set host(value) {
+    var partial = new URI('proto://' + value);
+    var oldPort = this._url.port();
+
+    // For some reason, we have to keep the port even though we override the
+    // complete host (not just the hostname) to not have one according to the
+    // spec.
+    this._url.host(value);
+
+    if (!partial.port()) {
+      this._url.port(oldPort);
+    }
   },
 
   get pathname() {
-    return this._url.pathname;
+    return this._url.pathname();
   },
 
   set pathname(value) {
+    this._url.pathname(value);
+    this._url.normalizePathname();
+  },
 
+  get path() {
+    return this._url.path();
+  },
+
+  set path(value) {
+    this._url.path(value);
+    this._url.normalizePath();
   }
 };
 
 [
+  'href',
+  'hostname',
+  'port',
+  'search',
+  'hash'
 ].forEach(function (property) {
   Object.defineProperty(URL.prototype, property, {
     get: function () {
-      return this._url[property];
+      return this._url[property]();
     },
     set: function (value) {
-      this._url[property] = value;
+      this._url[property](value);
     }
   });
 });
