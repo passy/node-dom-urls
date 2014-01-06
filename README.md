@@ -1,6 +1,8 @@
 Node DOM URLs
 =============
 
+[![Build Status](https://travis-ci.org/passy/node-dom-urls.png)](https://travis-ci.org/passy/node-dom-urls)
+
 A partial implementation of the [W3C URL Spec Draft](https://dvcs.w3.org/hg/url/raw-file/tip/Overview.html) for Node building on top of [URIjs](http://medialize.github.io/URI.js/).
 
 If you find incompatibilities, please [report them](https://github.com/passy/node-dom-urls/issues). Error handling is currently very different from the spec.
