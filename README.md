@@ -16,7 +16,7 @@ Example
 
 ```js
 
-var URL = require('dom-urls').URL;
+var URL = require('dom-urls');
 
 var url = new URL('relative', 'http://example.com/sub/');
 

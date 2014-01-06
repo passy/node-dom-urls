@@ -84,6 +84,4 @@ URL.prototype = {
   });
 });
 
-module.exports = {
-  URL: URL
-};
+module.exports = URL;

@@ -6,7 +6,7 @@
 
 'use strict';
 
-var URL = require('./index').URL;
+var URL = require('./index');
 var assert = require('chai').assert;
 
 suite('Properties', function () {
