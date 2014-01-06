@@ -1,6 +1,6 @@
 {
   "name": "dom-urls",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "DOM URLs for Node",
   "main": "index.js",
   "files": [
@@ -25,7 +25,7 @@
   },
   "engines": {
     "node": ">=0.8.0"
-  }
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/passy/node-dom-urls/issues"

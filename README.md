@@ -11,6 +11,11 @@ Browser Polyfills
   - [Joshua Bell's Polyfill](https://github.com/inexorabletash/polyfill/blob/master/url.js)
   - [Eric Arvidsson's Polyfill](https://github.com/arv/DOM-URL-Polyfill)
 
+Installation
+------------
+
+`npm install dom-urls`
+
 Example
 -------
 
