@@ -1,0 +1,38 @@
+{
+  "name": "dom-urls",
+  "version": "0.0.0",
+  "description": "DOM URLs for Node",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "test": "mocha -u tdd"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/passy/node-dom-urls"
+  },
+  "keywords": [
+    "dom",
+    "url",
+    "urls"
+  ],
+  "author": {
+    "name": "Pascal Hartig",
+    "email": "passy@twitter.com",
+    "url": "http://passy.me/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/passy/node-dom-urls/issues"
+  },
+  "devDependencies": {
+    "mocha": "~1.16.2",
+    "chai": "~1.8.1"
+  },
+  "dependencies": {
+    "extend": "~1.2.1",
+    "URIjs": "~1.11.2"
+  }
+}
