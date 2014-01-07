@@ -3,6 +3,7 @@ Node DOM URLs
 
 [![Build Status](https://travis-ci.org/passy/node-dom-urls.png)](https://travis-ci.org/passy/node-dom-urls)
 [![Code Climate](https://codeclimate.com/github/passy/node-dom-urls.png)](https://codeclimate.com/github/passy/node-dom-urls)
+[![Analytics](https://ga-beacon.appspot.com/UA-587894-18/node-dom-urls/readme)](https://github.com/igrigorik/ga-beacon)
 
 A partial implementation of the [W3C URL Spec Draft](https://dvcs.w3.org/hg/url/raw-file/tip/Overview.html) for Node building on top of [URIjs](http://medialize.github.io/URI.js/).
 
