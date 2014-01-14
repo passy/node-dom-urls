@@ -169,7 +169,14 @@ suite('Properties', function () {
   });
 
   test('origin', function () {
-    // not implemented
+    var url = new URL('HTTP://www.ExaMple.com/');
+    assert.equal(url.origin, 'http://www.example.com');
+
+    url.pathname = '/yolo';
+    assert.equal(url.origin, 'http://www.example.com');
+
+    url.port = '8080';
+    assert.equal(url.origin, 'http://www.example.com:8080');
   });
 
   test('href', function () {

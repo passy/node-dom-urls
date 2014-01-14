@@ -64,6 +64,24 @@ URL.prototype = {
   set path(value) {
     this._url.path(value);
     this._url.normalizePath();
+  },
+
+  // Origin is a read-only attribute:
+  // http://url.spec.whatwg.org/#api
+  get origin() {
+    // "Let uri-scheme be the scheme component of the URI,
+    // converted to lowercase."
+    var scheme = this._url.protocol().toLowerCase();
+
+    var hostname = this._url.hostname().toLowerCase();
+
+    var port = '';
+    if (this._url._parts.port !== null &&
+        this._url._parts.port !== URI.defaultPorts[this._url.protocol()]) {
+      port = ':' + this._url.port();
+    }
+
+    return scheme + '://' + hostname + port;
   }
 };
 
