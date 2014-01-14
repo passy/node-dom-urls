@@ -120,6 +120,9 @@ suite('Properties', function () {
 
     url.pathname = 'a/b/c';
     assert.equal(url.pathname, '/a/b/c');
+
+    url = new URL('http://www.EXAMPLE.com/sub1/../sub2/sub3');
+    assert.equal(url.pathname, '/sub2/sub3');
   });
 
   test('search', function () {
