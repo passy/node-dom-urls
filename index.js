@@ -31,7 +31,7 @@ URL.prototype = {
   },
 
   get host() {
-    return this._url.host();
+    return this._url.clone().normalizeHostname().host();
   },
 
   set host(value) {
@@ -94,7 +94,7 @@ URL.prototype = {
 ].forEach(function (property) {
   Object.defineProperty(URL.prototype, property, {
     get: function () {
-      return this._url[property]();
+      return this._url.clone().normalize()[property]();
     },
     set: function (value) {
       this._url[property](value);

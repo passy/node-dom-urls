@@ -77,6 +77,14 @@ suite('Properties', function () {
     assert.equal(url.href, 'http://again:99/');
   });
 
+  test('host/hostname normalization', function () {
+    var url = new URL('http://WWW.eXample.com/');
+    assert.equal(url.host, 'www.example.com');
+
+    url.hostname = 'EXample.com';
+    assert.equal(url.hostname, 'example.com');
+  });
+
   test('hostname', function () {
     var url = new URL('http://www.example.com/');
     assert.equal(url.hostname, 'www.example.com');
