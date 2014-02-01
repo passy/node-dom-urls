@@ -123,6 +123,9 @@ suite('Properties', function () {
     url = new URL('http://www.example.com/a/b/');
     assert.equal(url.pathname, '/a/b/');
 
+    url = new URL('http://www.example.com/a/b/../c');
+    assert.equal(url.pathname, '/a/c');
+
     url.pathname = '';
     assert.equal(url.pathname, '/');
 

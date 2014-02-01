@@ -7,7 +7,7 @@ function URL(urlStr, base) {
     throw new TypeError('You need to provide a URL');
   }
 
-  this._url = new URI(urlStr, base);
+  this._url = URI(urlStr, base).normalize();
 
   if (!this._url.protocol()) {
     throw new SyntaxError('Failed to construct \'URL\': Invalid URL');
