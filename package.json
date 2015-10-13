@@ -35,6 +35,6 @@
     "mocha": "^2.2.5"
   },
   "dependencies": {
-    "URIjs": "^1.15.1"
+    "urijs": "^1.15.1"
   }
 }

@@ -37,7 +37,7 @@ url.host = 'example.net:8080';
 url.port; // '8080'
 ```
 
-Why `URIjs` instead of `url`?
+Why `urijs` instead of `url`?
 -----------------------------
 
 I tried it first, but Node's own URL module doesn't propagate changes, so

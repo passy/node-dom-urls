@@ -1,6 +1,6 @@
 'use strict';
 
-var URI = require('URIjs');
+var URI = require('urijs');
 
 function URL(urlStr, base) {
   if (!urlStr) {
