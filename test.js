@@ -9,18 +9,18 @@
 var URL = require('./index');
 var assert = require('chai').assert;
 
-suite('Properties', function () {
+suite('Properties', () => {
 
-  test('constructor', function () {
-    assert.throws(function () {
+  test('constructor', () => {
+    assert.throws(() => {
       new URL();
     }, TypeError);
-    assert.throws(function () {
+    assert.throws(() => {
       new URL('relative');
     }, SyntaxError);
   });
 
-  test('base', function () {
+  test('base', () => {
     var url = new URL('relative', 'http://base/');
     assert.equal(url.toString(), 'http://base/relative');
 
@@ -34,7 +34,7 @@ suite('Properties', function () {
     assert.equal(url.toString(), 'http://base/absolute');
   });
 
-  test('protocol', function () {
+  test('protocol', () => {
     var url = new URL('mailto:abc@def.com');
     assert.equal(url.protocol, 'mailto:');
 
@@ -53,15 +53,15 @@ suite('Properties', function () {
     assert.equal(url.href, 'foo://www.example.com/');
   });
 
-  test('username', function () {
+  test('username', () => {
     // not implemented
   });
 
-  test('password', function () {
+  test('password', () => {
     // not implemented
   });
 
-  test('host', function () {
+  test('host', () => {
     var url = new URL('http://www.example.com/');
     assert.equal(url.host, 'www.example.com');
 
@@ -77,7 +77,7 @@ suite('Properties', function () {
     assert.equal(url.href, 'http://again:99/');
   });
 
-  test('host/hostname normalization', function () {
+  test('host/hostname normalization', () => {
     var url = new URL('http://WWW.eXample.com/');
     assert.equal(url.host, 'www.example.com');
 
@@ -85,7 +85,7 @@ suite('Properties', function () {
     assert.equal(url.hostname, 'example.com');
   });
 
-  test('hostname', function () {
+  test('hostname', () => {
     var url = new URL('http://www.example.com/');
     assert.equal(url.hostname, 'www.example.com');
 
@@ -98,7 +98,7 @@ suite('Properties', function () {
     assert.equal(url.href, 'http://changed:8080/');
   });
 
-  test('port', function () {
+  test('port', () => {
     var url = new URL('http://www.example.com/');
     assert.equal(url.port, '');
 
@@ -110,7 +110,7 @@ suite('Properties', function () {
     assert.equal(url.href, 'http://www.example.com:99/');
   });
 
-  test('pathname', function () {
+  test('pathname', () => {
     var url = new URL('http://www.example.com/');
     assert.equal(url.pathname, '/');
 
@@ -133,7 +133,7 @@ suite('Properties', function () {
     assert.equal(url.pathname, '/a/b/c');
   });
 
-  test('search', function () {
+  test('search', () => {
     var url = new URL('http://www.example.com/');
     assert.equal(url.search, '');
 
@@ -156,7 +156,7 @@ suite('Properties', function () {
     assert.equal(url.search, '');
   });
 
-  test('hash', function () {
+  test('hash', () => {
     var url = new URL('http://www.example.com/');
     assert.equal(url.hash, '');
 
@@ -179,7 +179,7 @@ suite('Properties', function () {
     assert.equal(url.hash, '');
   });
 
-  test('origin', function () {
+  test('origin', () => {
     var url = new URL('HTTP://www.ExaMple.com/');
     assert.equal(url.origin, 'http://www.example.com');
 
@@ -190,7 +190,7 @@ suite('Properties', function () {
     assert.equal(url.origin, 'http://www.example.com:8080');
   });
 
-  test('href', function () {
+  test('href', () => {
     var url = new URL('http://www.example.com/');
     assert.equal(url.href, 'http://www.example.com/');
     assert.equal(url.href, url.toString());

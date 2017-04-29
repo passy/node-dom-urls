@@ -15,7 +15,7 @@ function URL(urlStr, base) {
 }
 
 URL.prototype = {
-  toString: function () {
+  toString() {
     return this.href;
   },
 
@@ -91,12 +91,12 @@ URL.prototype = {
   'port',
   'search',
   'hash'
-].forEach(function (property) {
+].forEach(property => {
   Object.defineProperty(URL.prototype, property, {
-    get: function () {
+    get() {
       return this._url.clone().normalize()[property]();
     },
-    set: function (value) {
+    set(value) {
       this._url[property](value);
     }
   });
